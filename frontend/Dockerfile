@@ -1,5 +1,6 @@
 # Use Node.js Alpine base image
-FROM node:alpine
+#FROM node:alpine
+FROM node:18
 
 # Create and set the working directory inside the container
 WORKDIR /app
@@ -14,7 +15,7 @@ RUN npm install
 COPY . /app/
 
 # Expose the port your app runs on (replace <PORT_NUMBER> with your app's actual port)
-EXPOSE 3000
+EXPOSE 5173
 
 # Define the command to start your application (replace "start" with the actual command to start your app)
 CMD ["npm", "start"]
