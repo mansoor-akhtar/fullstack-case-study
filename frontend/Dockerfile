@@ -1,22 +1,16 @@
-# Use Node.js Alpine base image
-#FROM node:alpine
-#FROM node:22
-FROM node:22-alpine
+FROM node:20-slim
 
-# Create and set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package.json package-lock.json /app/
-
-# Install dependencies
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copy the entire codebase to the working directory
-COPY . /app/
+# Copy rest of the frontend source
+COPY . .
 
-# Expose the port your app runs on (replace <PORT_NUMBER> with your app's actual port)
-EXPOSE 3000
+# Expose Vite dev server port
+EXPOSE 5173
 
-# Define the command to start your application (replace "start" with the actual command to start your app)
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
