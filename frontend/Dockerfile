@@ -7,16 +7,18 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 #COPY package.json package-lock.json /app/
-COPY package.json /app/
+#COPY package.json /app/
+COPY package.json .
 
 # Install dependencies
 RUN npm install
 
 # Copy the entire codebase to the working directory
-COPY . /app/
+#COPY . /app/
+COPY . .
 
 # Expose the port your app runs on (replace <PORT_NUMBER> with your app's actual port)
-EXPOSE 5173
+EXPOSE 3000
 
 # Define the command to start your application (replace "start" with the actual command to start your app)
 CMD ["npm", "start"]
