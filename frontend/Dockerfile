@@ -6,16 +6,13 @@ FROM node:22
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-#COPY package.json package-lock.json /app/
-#COPY package.json /app/
-COPY package.json .
+COPY package.json package-lock.json /app/
 
 # Install dependencies
 RUN npm install
 
 # Copy the entire codebase to the working directory
-#COPY . /app/
-COPY . .
+COPY . /app/
 
 # Expose the port your app runs on (replace <PORT_NUMBER> with your app's actual port)
 EXPOSE 3000
